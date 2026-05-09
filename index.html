@@ -12,6 +12,17 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <title>مآل للحلول التمويلية والعقارية | حلول مالية ذكية</title>
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Hero LCP: small AVIF candidates, capped desktop width via imagesizes -->
+  <link rel="preload" as="image" type="image/avif" fetchpriority="high" crossorigin
+    imagesrcset="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=480&amp;q=60&amp;fm=avif 480w, https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=768&amp;q=60&amp;fm=avif 768w, https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1024&amp;q=60&amp;fm=avif 1024w, https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1280&amp;q=60&amp;fm=avif 1280w"
+    imagesizes="(max-width: 1280px) 100vw, 1280px">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -51,8 +62,6 @@
     }
   </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
-
     * {
       font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -283,14 +292,6 @@
       animation: float 3s ease-in-out infinite;
     }
 
-    /* Hero background image + readable overlay */
-    .hero-bg-image {
-      background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2400&q=80');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
     .hero-overlay {
       background: linear-gradient(
         135deg,
@@ -298,14 +299,6 @@
         rgba(233, 236, 239, 0.82) 45%,
         rgba(240, 253, 244, 0.85) 100%
       );
-    }
-
-    /* Why section — same layering pattern as hero, different photo */
-    .why-bg-image {
-      background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
 
     .why-overlay {
@@ -335,14 +328,6 @@
       transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
   </style>
-  <!-- Google tag (gtag.js) - Replace with your GA4 ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
@@ -417,8 +402,37 @@
 
   <!-- Hero Section -->
   <section class="min-h-screen flex items-center pt-10 pb-16 sm:pt-14 sm:pb-20 relative overflow-hidden">
-    <!-- Background image (underneath everything) -->
-    <div class="hero-bg-image absolute inset-0 z-0 scale-105" aria-hidden="true"></div>
+    <!-- Background image: eager + priority; responsive AVIF/WebP/JPEG; sized to reduce CLS -->
+    <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 1280px) 100vw, 1280px" srcset="
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=480&amp;q=60&amp;fm=avif 480w,
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=768&amp;q=60&amp;fm=avif 768w,
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1024&amp;q=60&amp;fm=avif 1024w,
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1280&amp;q=60&amp;fm=avif 1280w">
+        <source type="image/webp" sizes="(max-width: 1280px) 100vw, 1280px" srcset="
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=480&amp;q=68&amp;fm=webp 480w,
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=768&amp;q=68&amp;fm=webp 768w,
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1024&amp;q=68&amp;fm=webp 1024w,
+          https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1280&amp;q=68&amp;fm=webp 1280w">
+        <img
+          class="absolute inset-0 h-full w-full scale-105 object-cover"
+          src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=768&amp;q=72"
+          srcset="
+            https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=480&amp;q=72 480w,
+            https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=768&amp;q=72 768w,
+            https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1024&amp;q=72 1024w,
+            https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&amp;fit=crop&amp;w=1280&amp;q=72 1280w"
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          width="1280"
+          height="854"
+          alt=""
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+          crossorigin="anonymous">
+      </picture>
+    </div>
     <!-- Soft overlay so photo reads clearly with brand tint -->
     <div class="hero-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
     <!-- Glowing orbs (above overlay, below content) -->
@@ -636,7 +650,36 @@
 
   <!-- Why Choose Us Section -->
   <section id="why" class="py-20 relative overflow-hidden">
-    <div class="why-bg-image absolute inset-0 z-0 scale-105" aria-hidden="true"></div>
+    <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 1280px) 100vw, 1280px" srcset="
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=480&amp;q=58&amp;fm=avif 480w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=768&amp;q=58&amp;fm=avif 768w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1024&amp;q=58&amp;fm=avif 1024w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1280&amp;q=58&amp;fm=avif 1280w">
+        <source type="image/webp" sizes="(max-width: 1280px) 100vw, 1280px" srcset="
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=480&amp;q=66&amp;fm=webp 480w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=768&amp;q=66&amp;fm=webp 768w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1024&amp;q=66&amp;fm=webp 1024w,
+          https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1280&amp;q=66&amp;fm=webp 1280w">
+        <img
+          class="absolute inset-0 h-full w-full scale-105 object-cover"
+          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=768&amp;q=70"
+          srcset="
+            https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=480&amp;q=70 480w,
+            https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=768&amp;q=70 768w,
+            https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1024&amp;q=70 1024w,
+            https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=1280&amp;q=70 1280w"
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          width="1280"
+          height="854"
+          alt=""
+          decoding="async"
+          fetchpriority="low"
+          loading="lazy"
+          crossorigin="anonymous">
+      </picture>
+    </div>
     <div class="why-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -849,15 +892,40 @@
   </a>
 
   <script>
-    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    let scrollRafPending = false;
+    function updateScrollUI() {
+      if (window.scrollY > 50) navbar.classList.add('navbar-scrolled');
+      else navbar.classList.remove('navbar-scrolled');
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('text-primary-600');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('text-primary-600');
+        }
+      });
+    }
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
-      } else {
-        navbar.classList.remove('navbar-scrolled');
+      if (!scrollRafPending) {
+        scrollRafPending = true;
+        requestAnimationFrame(() => {
+          updateScrollUI();
+          scrollRafPending = false;
+        });
       }
-    });
+    }, { passive: true });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateScrollUI);
+    } else {
+      updateScrollUI();
+    }
 
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
@@ -918,27 +986,6 @@
       });
     });
 
-    // Active nav link on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('text-primary-600');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('text-primary-600');
-        }
-      });
-    });
-
     // Track CTA clicks (Google Analytics)
     document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -961,6 +1008,14 @@
         }
       });
     });
+  </script>
+  <!-- Analytics after first paint; replace GA4 ID when live -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
 </body>
 </html>

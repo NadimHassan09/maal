@@ -1,0 +1,4 @@
+config.local.php
+/vendor/
+/data/rate_*.txt
+composer.phar

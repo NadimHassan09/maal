@@ -1,0 +1,23 @@
+Background photographs (hero/why — WebP per width)
+==================================================
+
+Responsive WebP files (hero-*.webp, why-*.webp) are stored copies derived from
+photographs previously delivered via Unsplash (images.unsplash.com). They are
+redistributed here only so the site can be served without loading images from
+external hosts.
+
+License
+-------
+Use of Unsplash content is governed by the Unsplash License, which allows free
+download and use for commercial and non-commercial purposes without paying
+royalties or asking permission from Unsplash or contributing photographers,
+within the terms published at:
+
+  https://unsplash.com/license
+
+Source IDs (for reference / attribution if you choose to credit photographers):
+  • Hero background set: photo ID photo-1554224155-6726b3ff858f
+  • “Why us” background set: photo ID photo-1454165804606-c3d57bc86b40
+
+(This file does not replace the Unsplash License; it summarizes why local copies
+exist and where to read the full terms.)

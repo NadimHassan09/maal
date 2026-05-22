@@ -12,37 +12,22 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <title>مآل للحلول التمويلية والعقارية | حلول مالية ذكية</title>
-  <link rel="icon" href="assets/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
-  <link rel="preload" href="assets/css/tailwind.css" as="style">
-  <link rel="stylesheet" href="assets/css/tailwind.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Hero LCP: local WebP srcset -->
-  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
-    imagesrcset="assets/images/hero-480.webp 480w, assets/images/hero-768.webp 768w, assets/images/hero-1024.webp 1024w, assets/images/hero-1280.webp 1280w"
-    imagesizes="(max-width: 1280px) 100vw, 1280px">
-  <link rel="preload" as="image" type="image/webp" href="assets/logo-688.webp" media="(max-width: 1023px)">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "مآل للحلول التمويلية والعقارية",
-    "description": "حلول مالية ذكية تمنحك بداية أكثر استقرارًا. سداد المتعثرات، حلول تمويلية، فائض كاش.",
-    "url": "https://example.com",
-    "telephone": "+966563965950",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "SA"
-    },
-    "areaServed": "SA",
-    "priceRange": "$$"
-  }
-  </script>
+  <link rel="icon" href="assets/logo-320.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="assets/logo-320.webp">
+  <link rel="preload" href="assets/fonts/cairo-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/css/site.css" as="style">
+  <link rel="preload" as="image" type="image/webp" href="assets/images/hero-480.webp" fetchpriority="high" media="(max-width: 767px)">
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width: 768px)"
+    imagesrcset="assets/images/hero-768.webp 768w, assets/images/hero-1024.webp 1024w, assets/images/hero-1280.webp 1280w"
+    imagesizes="100vw">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+    html,body{margin:0;padding:0;width:100%;background:#fff}
+    .hero-overlay{background:linear-gradient(135deg,rgba(255,255,255,.9) 0%,rgba(238,241,246,.88) 45%,rgba(250,248,243,.9) 100%)}
+    .glass{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    @media(max-width:1023px){.lcp-paint,.lcp-paint .animate-fade-in-up,.lcp-paint .delay-100,.lcp-paint .delay-200,.lcp-paint .delay-300,.lcp-paint .delay-400,.lcp-paint .delay-500{animation:none!important;opacity:1!important;transform:none!important}}
+  </style>
 </head>
 <body class="bg-white text-brand-800 antialiased m-0 p-0">
 
@@ -54,7 +39,7 @@
         <a href="#" class="hidden lg:flex items-center gap-3 group shrink-0">
           <picture>
             <source type="image/webp" srcset="assets/logo-440.webp">
-            <img src="assets/logo.png" alt="مآل للحلول التمويلية والعقارية" class="logo-img transition-opacity group-hover:opacity-90" width="440" height="144" loading="eager" decoding="async">
+            <img src="assets/logo-440.webp" alt="مآل للحلول التمويلية والعقارية" class="logo-img transition-opacity group-hover:opacity-90" width="440" height="144" loading="eager" decoding="async">
           </picture>
         </a>
 
@@ -110,7 +95,7 @@
           assets/images/hero-768.webp 768w,
           assets/images/hero-1024.webp 1024w,
           assets/images/hero-1280.webp 1280w"
-        sizes="(max-width: 1280px) 100vw, 1280px"
+        sizes="100vw"
         width="1280"
         height="854"
         alt=""
@@ -120,8 +105,8 @@
     </div>
     <!-- Soft overlay so photo reads clearly with brand tint -->
     <div class="hero-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
-    <!-- Glowing orbs (above overlay, below content) -->
-    <div class="absolute inset-0 z-[2] opacity-35 pointer-events-none overflow-hidden">
+    <!-- Glowing orbs (above overlay, below content) — hidden on mobile to reduce paint cost -->
+    <div class="absolute inset-0 z-[2] opacity-35 pointer-events-none overflow-hidden max-lg:hidden">
       <div class="absolute top-16 max-md:top-12 right-4 sm:right-10 w-56 h-56 sm:w-72 sm:h-72 bg-gold-300 rounded-full mix-blend-multiply filter blur-3xl animate-float opacity-40"></div>
       <div class="absolute top-32 max-md:top-24 left-2 sm:left-10 w-56 h-56 sm:w-72 sm:h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl animate-float delay-300 opacity-35"></div>
       <div class="absolute bottom-16 max-md:bottom-12 right-1/4 sm:right-1/3 w-52 h-52 sm:w-64 sm:h-64 bg-gold-200 rounded-full mix-blend-multiply filter blur-3xl animate-float delay-500 opacity-40"></div>
@@ -130,11 +115,11 @@
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Text Content -->
-        <div class="text-center lg:text-right flex flex-col">
-          <div class="order-1 lg:order-1 lg:hidden flex justify-center mb-6 animate-fade-in-up">
+        <div class="text-center lg:text-right flex flex-col lcp-paint">
+          <div class="order-1 lg:order-1 lg:hidden flex justify-center mb-6">
             <picture>
-              <source type="image/webp" srcset="assets/logo-320.webp 320w, assets/logo-688.webp 688w" sizes="(max-width: 639px) 98vw, 688px">
-              <img src="assets/logo.png" alt="مآل للحلول التمويلية والعقارية" class="hero-logo-mobile" width="440" height="144" loading="eager" decoding="async">
+              <source type="image/webp" srcset="assets/logo-320.webp 320w, assets/logo-688.webp 688w" sizes="(max-width: 639px) 280px, 688px">
+              <img src="assets/logo-320.webp" alt="مآل للحلول التمويلية والعقارية" class="hero-logo-mobile" width="440" height="144" loading="eager" decoding="async">
             </picture>
           </div>
           <!-- Visible title lg+ only; sr-only below lg (logo carries the brand visually) -->
@@ -254,7 +239,7 @@
   </section>
 
   <!-- Lead form + map (under hero): form يمين، خريطة يسار (RTL) -->
-  <section id="lead-form" class="py-16 sm:py-20 bg-[#F8F9FA] border-y border-brand-100">
+  <section id="lead-form" class="py-16 sm:py-20 bg-[#F8F9FA] border-y border-brand-100 section-deferred">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
         <!-- عمود النموذج (يمين في RTL): العنوان في منتصف هذا النصف -->
@@ -337,7 +322,7 @@
             <iframe
               title="موقع مآل على خرائط Google"
               class="w-full h-full min-h-[280px] sm:min-h-[340px] lg:min-h-[480px] border-0"
-              src="https://www.google.com/maps?q=21.558784%2C39.1251117&amp;hl=ar&amp;z=16&amp;output=embed"
+              data-src="https://www.google.com/maps?q=21.558784%2C39.1251117&amp;hl=ar&amp;z=16&amp;output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               allowfullscreen></iframe>
@@ -351,7 +336,7 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="py-20 bg-white">
+  <section id="services" class="py-20 bg-white section-deferred">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
         <span class="inline-block bg-gold-50 text-primary-800 font-semibold px-4 py-1.5 rounded-full text-sm mb-4 ring-1 ring-gold-200">خدماتنا</span>
@@ -396,7 +381,7 @@
   </section>
 
   <!-- How We Work Section -->
-  <section id="how" class="py-20 bg-[#F8F9FA]">
+  <section id="how" class="py-20 bg-[#F8F9FA] section-deferred">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
         <span class="inline-block bg-gold-50 text-primary-800 font-semibold px-4 py-1.5 rounded-full text-sm mb-4 ring-1 ring-gold-200">كيف نعمل</span>
@@ -435,7 +420,7 @@
   </section>
 
   <!-- Why Choose Us Section -->
-  <section id="why" class="py-20 relative overflow-hidden">
+  <section id="why" class="py-20 relative overflow-hidden section-deferred">
     <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
       <img
         class="absolute inset-0 h-full w-full min-h-full min-w-full object-cover max-md:scale-100 scale-105"
@@ -445,7 +430,7 @@
           assets/images/why-768.webp 768w,
           assets/images/why-1024.webp 1024w,
           assets/images/why-1280.webp 1280w"
-        sizes="(max-width: 1280px) 100vw, 1280px"
+        sizes="100vw"
         width="1280"
         height="854"
         alt=""
@@ -568,7 +553,7 @@
   </section>
 
   <!-- CTA Section -->
-  <section id="contact" class="py-20 gradient-cta relative overflow-hidden">
+  <section id="contact" class="py-20 gradient-cta relative overflow-hidden section-deferred">
     <!-- Pattern overlay -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
@@ -694,6 +679,22 @@
     </svg>
   </a>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "مآل للحلول التمويلية والعقارية",
+    "description": "حلول مالية ذكية تمنحك بداية أكثر استقرارًا. سداد المتعثرات، حلول تمويلية، فائض كاش.",
+    "url": "https://example.com",
+    "telephone": "+966563965950",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SA"
+    },
+    "areaServed": "SA",
+    "priceRange": "$$"
+  }
+  </script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

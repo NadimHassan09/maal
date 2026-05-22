@@ -2,6 +2,39 @@
       font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Mobile LCP: avoid opacity-0 entrance animations on above-the-fold hero */
+    @media (max-width: 1023px) {
+      .lcp-paint,
+      .lcp-paint .animate-fade-in-up,
+      .lcp-paint .animate-fade-in,
+      .lcp-paint .delay-100,
+      .lcp-paint .delay-200,
+      .lcp-paint .delay-300,
+      .lcp-paint .delay-400,
+      .lcp-paint .delay-500 {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    .section-deferred {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 600px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-fade-in-up,
+      .animate-fade-in,
+      .animate-float,
+      .reveal {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
     html {
       scroll-behavior: smooth;
       margin: 0;

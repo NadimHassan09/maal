@@ -2,35 +2,39 @@ const navbar = document.getElementById('navbar');
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('nav a[href^="#"]');
 let scrollRafPending = false;
-function updateScrollUI() {
+
+function updateNavbarScrolled() {
   if (window.scrollY > 50) navbar.classList.add('navbar-scrolled');
   else navbar.classList.remove('navbar-scrolled');
-  let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 120) {
-      current = section.getAttribute('id');
-    }
-  });
-  navLinks.forEach(link => {
-    link.classList.remove('text-primary-600');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('text-primary-600');
-    }
-  });
 }
+
 window.addEventListener('scroll', () => {
   if (!scrollRafPending) {
     scrollRafPending = true;
     requestAnimationFrame(() => {
-      updateScrollUI();
+      updateNavbarScrolled();
       scrollRafPending = false;
     });
   }
 }, { passive: true });
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', updateScrollUI);
+  document.addEventListener('DOMContentLoaded', updateNavbarScrolled);
 } else {
-  updateScrollUI();
+  updateNavbarScrolled();
+}
+
+if (sections.length && navLinks.length) {
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navLinks.forEach((link) => {
+        link.classList.toggle('text-primary-600', link.getAttribute('href') === '#' + id);
+      });
+    });
+  }, { rootMargin: '-120px 0px -55% 0px', threshold: 0 });
+  sections.forEach((section) => navObserver.observe(section));
 }
 
 const menuBtn = document.getElementById('menuBtn');
@@ -113,6 +117,20 @@ document.querySelectorAll('a[href^="tel:"]').forEach(btn => {
     }
   });
 });
+
+(function () {
+  var mapFrame = document.querySelector('iframe[data-src]');
+  if (mapFrame) {
+    var mapObserver = new IntersectionObserver(function (entries, obs) {
+      if (entries[0].isIntersecting) {
+        mapFrame.src = mapFrame.getAttribute('data-src');
+        mapFrame.removeAttribute('data-src');
+        obs.disconnect();
+      }
+    }, { rootMargin: '200px 0px' });
+    mapObserver.observe(mapFrame);
+  }
+})();
 
 (function () {
   var LEAD_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxyrdKe10c8JBwvZHafCq31GCMOdk3l-kT2oQuBF4IXdM76Ow7YBkRsUbgs-UqR9S9IBg/exec';
@@ -230,7 +248,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(btn => {
   });
 })();
 
-window.addEventListener('load', function () {
+function loadThirdPartyAnalytics() {
   (function (e, t, n) {
     if (e.snaptr) return;
     var a = (e.snaptr = function () {
@@ -247,13 +265,30 @@ window.addEventListener('load', function () {
   snaptr('init', 'ce79a06e-8a2a-4692-8e54-7b8c92796096');
   snaptr('track', 'PAGE_VIEW');
 
-  var ga = document.createElement('script');
-  ga.async = true;
-  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
-  document.head.appendChild(ga);
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-}, { once: true });
+  var GA_ID = 'G-XXXXXXXXXX';
+  if (GA_ID && GA_ID.indexOf('XXXX') === -1) {
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(ga);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+}
+
+function scheduleThirdParty() {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadThirdPartyAnalytics, { timeout: 4000 });
+  } else {
+    setTimeout(loadThirdPartyAnalytics, 2500);
+  }
+}
+
+if (document.readyState === 'complete') {
+  scheduleThirdParty();
+} else {
+  window.addEventListener('load', scheduleThirdParty, { once: true });
+}

@@ -1,5 +1,16 @@
-﻿    * {
-      font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+﻿    html,
+    body,
+    button,
+    input,
+    select,
+    textarea {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      font-family: inherit;
     }
 
     /* Mobile LCP: avoid opacity-0 entrance animations on above-the-fold hero */
